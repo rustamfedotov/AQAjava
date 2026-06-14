@@ -18,5 +18,6 @@ public class UnmatchedDeckSite {
     public UnmatchedDeckSite checkStartHealth(int exetectedHealth){
         String expectedText = "Start health " + exetectedHealth;
         startHearthLevel.shouldHave(exactText(expectedText));
+        return this;
     }
 }
