@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.bulgakov.pages.UnmatchedDeckSite;
 import ru.bulgakov.pages.YandexSearchPage;
-import ru.bulgakov.pages.YandexSearchResultsPage;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -14,10 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class SearchTest {
-    private static final String UNMATCHED_DB_BASE_URL = "https://unmatched.cards/umdb/decks";
-    private static final String START_HEALTH_LABEL = "Start health";
     private static final int BEOWULF_START_HEALTH = 17;
-    private static final String expectedText = START_HEALTH_LABEL + " " + BEOWULF_START_HEALTH;
 
     @Test
     @DisplayName("Проверить, что цена обучения - 47 000")
@@ -25,8 +21,6 @@ public class SearchTest {
     void mentoringPriceShouldBe47000Test() {
 
         Configuration.holdBrowserOpen = true;
-        YandexSearchPage yandexSearchPage = new YandexSearchPage();
-        YandexSearchResultsPage yandexSearchResultsPage = new YandexSearchResultsPage();
 
 
         open("https://ya.ru", YandexSearchPage.class)
