@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import ru.bulgakov.pages.UnmatchedDeckSite;
 import ru.bulgakov.pages.YandexSearchPage;
 import ru.bulgakov.pages.YandexSearchResultsPage;
 
@@ -49,16 +50,12 @@ public class SearchTest {
     }
 
     @Test
+    @DisplayName("Beowulf start health should be 17")
+    @Tag("POSITIVE")
     void beowulfStartHealthShouldBe17Test(){
         Configuration.holdBrowserOpen=true;
 
-        // шаг 1. открыть сайт
-        open(UNMATCHED_DB_BASE_URL);
-
-        // шаг 2. найти
-        $("a[href=\"/umdb/decks/beowulf\"]").shouldBe(interactable).click();
-
-        // шаг 3. ОР: Beowulf Start Health=17
-        $("span.text-nowrap").shouldHave(exactText(expectedText));
+        UnmatchedDeckSite.openBeowulfDeck()
+                .checkStartHealth(BEOWULF_START_HEALTH);
     }
 }
